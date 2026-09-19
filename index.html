@@ -25,7 +25,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=20260920_v7">
+  <link rel="stylesheet" href="style.css?v=20260920_v8">
 </head>
 <body>
 
@@ -149,6 +149,15 @@
             <div style="font-weight: 800; font-size: 14px; color: #854d0e;">豪華賞品が勢揃い！</div>
             <div style="font-size: 11px; color: #a16207;">新ペリア方式なので初参加や初心者の方にも上位入賞の大チャンス！</div>
           </div>
+        </div>
+
+        <!-- 賞品カテゴリー切り替えタブ -->
+        <div class="pill-tab-group" style="margin-bottom: 14px;">
+          <button class="pill-tab prize-filter-tab active" data-filter="all">すべて</button>
+          <button class="pill-tab prize-filter-tab" data-filter="個人戦">個人戦</button>
+          <button class="pill-tab prize-filter-tab" data-filter="チーム戦">チーム戦 (4名分)</button>
+          <button class="pill-tab prize-filter-tab" data-filter="アトラクション賞">ドラコン/ニアピン/他</button>
+          <button class="pill-tab prize-filter-tab" data-filter="参加賞">参加賞</button>
         </div>
 
         <div id="prizes-list-container" class="prize-grid"></div>
@@ -324,7 +333,7 @@
   </div>
 
   <!-- アプリケーションデータ & スクリプト（キャッシュバスター付与） -->
-  <script src="data.js?v=20260920_v5"></script>
-  <script src="app.js?v=20260920_v7"></script>
+  <script src="data.js?v=20260920_v11"></script>
+  <script src="app.js?v=20260920_v8"></script>
 </body>
 </html>

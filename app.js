@@ -514,54 +514,120 @@ function initCourseGuide() {
 }
 
 /* ===================================================
-   5. タブ4：賞品一覧（Prizes）
+   5. タブ4：賞品一覧（Prizes & 賞品.xlsx 準拠）
 =================================================== */
 function renderPrizes() {
   const prizesContainer = document.getElementById('prizes-list-container');
+  const filterTabs = document.querySelectorAll('.prize-filter-tab');
   if (!prizesContainer) return;
 
-  prizesContainer.innerHTML = GOLF_APP_DATA.prizes.map((p, idx) => {
-    const isTop = idx < 3;
-    let badgeClass = 'badge-top';
-    if (p.category.includes('アトラクション')) badgeClass = 'badge-attraction';
-    if (p.category.includes('特別') || p.category.includes('団体')) badgeClass = 'badge-special';
+  let currentFilter = 'all';
 
-    return `
-      <div class="prize-card ${isTop ? 'is-top' : ''}">
-        <div class="prize-icon-box">
-          <i data-lucide="${getPrizeIcon(p.icon)}"></i>
+  function displayPrizes() {
+    const list = GOLF_APP_DATA.prizes.filter(p => {
+      if (currentFilter === 'all') return true;
+      if (currentFilter === 'アトラクション賞') {
+        return p.category === 'アトラクション賞' || p.category === '対抗戦';
+      }
+      return p.category === currentFilter;
+    });
+
+    prizesContainer.innerHTML = list.map((p, idx) => {
+      const isTop = p.highlight === true;
+      let badgeClass = 'badge-top';
+      if (p.category === 'アトラクション賞' || p.category === '対抗戦') badgeClass = 'badge-attraction';
+      if (p.category === '参加賞') badgeClass = 'badge-special';
+
+      // 詳細リスト（ドラコン・ニアピン等）
+      const detailsHtml = p.details ? `
+        <div style="margin-top: 8px; background: #f8fafc; border-radius: 6px; padding: 6px 10px; font-size: 11px; color: #475569; border: 1px solid #e2e8f0;">
+          ${p.details.map(d => `<div style="display: flex; align-items: center; gap: 4px;"><span>・</span><span>${d}</span></div>`).join('')}
         </div>
-        <div style="flex: 1; min-width: 0;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 4px;">
-            <span class="prize-badge ${badgeClass}">${p.rank}</span>
-            <span style="font-size: 10px; color: #64748b; background: #f1f5f9; padding: 1px 6px; border-radius: 4px;">${p.tag}</span>
-          </div>
-          <div style="font-size: 14px; font-weight: 700; color: #111827; margin: 4px 0 2px 0;">
-            ${p.title}
-          </div>
-          <div style="font-size: 12px; color: #4b5563; line-height: 1.45;">
-            ${p.desc}
+      ` : '';
+
+      // 部門長賞の全28賞内訳展開アコーディオン
+      const deptsHtml = p.depts ? `
+        <div style="margin-top: 8px;">
+          <button type="button" class="btn-toggle-depts" style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; width: 100%; justify-content: center;">
+            <span>全28賞の協賛部門一覧を見る</span>
+            <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+          </button>
+          <div class="depts-grid" style="display: none; grid-template-columns: repeat(2, 1fr); gap: 4px; margin-top: 6px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; font-size: 11px; color: #334155;">
+            ${p.depts.map(dept => `<div style="padding: 2px 4px;">🏷️ ${dept}</div>`).join('')}
           </div>
         </div>
-      </div>
-    `;
-  }).join('');
+      ` : '';
+
+      return `
+        <div class="prize-card ${isTop ? 'is-top' : ''}">
+          <div class="prize-icon-box">
+            <i data-lucide="${getPrizeIcon(p.icon)}"></i>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 4px;">
+              <span class="prize-badge ${badgeClass}">${p.rank}</span>
+              <span style="font-size: 10px; color: #64748b; background: #f1f5f9; padding: 1px 6px; border-radius: 4px;">${p.tag}</span>
+            </div>
+            <div style="font-size: 14px; font-weight: 800; color: #111827; margin: 4px 0 2px 0; line-height: 1.35;">
+              ${p.title}
+            </div>
+            <div style="font-size: 12px; color: #4b5563; line-height: 1.45;">
+              ${p.desc}
+            </div>
+            ${detailsHtml}
+            ${deptsHtml}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // 部門長アコーディオンのイベント登録
+    prizesContainer.querySelectorAll('.btn-toggle-depts').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
+        const isOpen = content.style.display === 'grid';
+        content.style.display = isOpen ? 'none' : 'grid';
+        btn.querySelector('span').textContent = isOpen ? '全28賞の協賛部門一覧を見る' : '協賛部門一覧を閉じる';
+        if (icon) {
+          icon.setAttribute('data-lucide', isOpen ? 'chevron-down' : 'chevron-up');
+        }
+        if (window.lucide) window.lucide.createIcons();
+      });
+    });
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
+
+  // フィルタータブ切り替え
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentFilter = tab.getAttribute('data-filter');
+      displayPrizes();
+    });
+  });
+
+  // 初回描画
+  displayPrizes();
 }
 
 function getPrizeIcon(type) {
   const map = {
-    beef: 'utensils',
+    trophy: 'trophy',
+    medal: 'medal',
+    award: 'award',
     sparkles: 'sparkles',
-    wine: 'wine',
-    'circle-dot': 'disc',
-    cake: 'gift',
-    target: 'crosshair',
-    soup: 'flame',
+    gift: 'gift',
+    utensils: 'utensils',
+    beer: 'beer',
+    cake: 'cake',
     zap: 'zap',
-    crosshair: 'target',
-    crown: 'crown',
-    camera: 'camera',
-    award: 'award'
+    crosshair: 'crosshair'
   };
   return map[type] || 'gift';
 }
