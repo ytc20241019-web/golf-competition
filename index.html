@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1b5e20">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="YTCゴルフコンペ">
+  
+  <title>第4回 YTCカップ ゴルフコンペ</title>
+
+  <!-- Google Fonts: Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- スマホファースト・PC中央配置メインコンテナ -->
+  <div class="app-container">
+
+    <!-- 上部固定ヘッダー -->
+    <header class="app-header">
+      <div class="header-inner">
+        <div>
+          <span class="header-badge">
+            <i data-lucide="trophy" style="width: 12px; height: 12px;"></i>
+            第4回 社内コンペ
+          </span>
+          <h1 class="header-title">
+            <span>YTCカップ ゴルフコンペ</span>
+          </h1>
+          <div class="header-subtitle">
+            <i data-lucide="map-pin" style="width: 13px; height: 13px;"></i>
+            <span>ムーンレイクGC 鞍手コース (10/10)</span>
+          </div>
+        </div>
+        <button id="btn-lock-app" class="btn-header-lock" title="画面をロックする">
+          <i data-lucide="lock" style="width: 13px; height: 13px;"></i>
+          <span>ロック</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- メインコンテンツ（全6タブ） -->
+    <main class="app-main">
+
+      <!-- ==============================================
+           タブ1：大会要領（Rules & Schedule）
+      ============================================== -->
+      <section id="tab-rules" class="tab-panel active">
+        <!-- 大会基本情報 -->
+        <div id="rules-info-content"></div>
+
+        <!-- タイムスケジュール -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="clock"></i></div>
+            <h3>本日のスケジュール</h3>
+          </div>
+          <div id="timeline-list" class="timeline"></div>
+        </div>
+
+        <!-- 競技ルール -->
+        <div id="rules-list-content"></div>
+
+        <!-- 緊急連絡先 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="phone"></i></div>
+            <h3>緊急連絡先</h3>
+          </div>
+          <div id="emergency-contacts-list" class="emergency-grid"></div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           タブ2：組み合わせ（Pairings）
+      ============================================== -->
+      <section id="tab-pairings" class="tab-panel">
+        <!-- 自分の組ピン留めセレクター -->
+        <div class="selector-box">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #1b5e20; margin-bottom: 6px;">
+            📌 自分の名前を選択して組を最上部に固定
+          </label>
+          <select id="pairing-member-select" class="custom-select"></select>
+        </div>
+
+        <!-- ピン留め表示領域 -->
+        <div id="pinned-group-container" style="display: none;"></div>
+
+        <!-- コース別フィルタータブ -->
+        <div class="pill-tab-group">
+          <button class="pill-tab pairings-filter-tab active" data-filter="all">全 19 組</button>
+          <button class="pill-tab pairings-filter-tab" data-filter="east">東 → 中 (7組)</button>
+          <button class="pill-tab pairings-filter-tab" data-filter="center">中 → 西 (6組)</button>
+          <button class="pill-tab pairings-filter-tab" data-filter="west">西 → 東 (6組)</button>
+        </div>
+
+        <!-- 組別カード一覧 -->
+        <div id="groups-list"></div>
+      </section>
+
+      <!-- ==============================================
+           タブ3：コースガイド（Course Info）
+      ============================================== -->
+      <section id="tab-course" class="tab-panel">
+
+        <!-- コース切り替えタブ -->
+        <div class="pill-tab-group">
+          <button class="pill-tab course-pill-tab active" data-course="east">東コース (9H)</button>
+          <button class="pill-tab course-pill-tab" data-course="center">中コース (9H)</button>
+          <button class="pill-tab course-pill-tab" data-course="west">西コース (9H)</button>
+        </div>
+
+        <!-- ホール別アコーディオン -->
+        <div id="course-accordion-container"></div>
+
+        <!-- 施設・茶屋・トイレ案内 -->
+        <div class="card" style="margin-top: 14px;">
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="coffee"></i></div>
+            <h3>コース内設備・売店・トイレ</h3>
+          </div>
+          <div id="facilities-info-list"></div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           タブ4：賞品一覧（Prizes）
+      ============================================== -->
+      <section id="tab-prizes" class="tab-panel">
+        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%); border: 1px solid #fde047; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+          <div style="font-size: 24px;">🎁</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #854d0e;">豪華賞品が勢揃い！</div>
+            <div style="font-size: 11px; color: #a16207;">新ペリア方式なので初参加や初心者の方にも上位入賞の大チャンス！</div>
+          </div>
+        </div>
+
+        <div id="prizes-list-container" class="prize-grid"></div>
+      </section>
+
+      <!-- ==============================================
+           タブ5：📸 写真投稿（Photo Upload）
+      ============================================== -->
+      <section id="tab-photo" class="tab-panel">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon"><i data-lucide="camera"></i></div>
+            <h3>コンペ思い出写真投稿</h3>
+          </div>
+          <p style="font-size: 12px; color: #4b5563; line-height: 1.5; margin-bottom: 14px;">
+            ログイン不要で誰でも即座に投稿できます！<br>
+            ラウンド中のナイスショットや笑顔、楽しいお昼ご飯の様子などをご投稿ください。<br>
+            <strong>※ 表彰式の待ち時間に上映予定</strong>
+          </p>
+
+          <!-- 投稿者選択 -->
+          <div style="margin-bottom: 12px;">
+            <label style="display: block; font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 4px;">
+              お名前（ニックネーム可）
+            </label>
+            <select id="photo-author-select" class="custom-select" style="min-height: 44px;"></select>
+          </div>
+
+          <!-- ファイル選択（隠しinput） -->
+          <input type="file" id="photo-file-input" accept="image/*" style="display: none;">
+
+          <!-- アップロード ドロップゾーン -->
+          <div id="photo-dropzone" class="upload-dropzone">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="image-plus" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div style="font-size: 14px; font-weight: 700; color: #1e293b;">
+              写真を撮影 または ライブラリから選択
+            </div>
+            <div style="font-size: 11px; color: #64748b;">
+              タップしてカメラ起動・アルバム選択（PNG, JPG, HEIC等）
+            </div>
+          </div>
+
+          <!-- プレビュー表示領域 -->
+          <div id="photo-preview-container" class="preview-container" style="display: none;">
+            <img id="photo-preview-img" class="preview-img" src="" alt="アップロードプレビュー">
+            <button id="photo-remove-btn" class="preview-remove-btn" title="写真を削除">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- アップロード実行ボタン -->
+          <div style="margin-top: 14px;">
+            <button id="photo-upload-btn" class="btn-primary" disabled>
+              <i data-lucide="upload-cloud"></i>
+              <span>写真をアップロードする</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 投稿時のヒント -->
+        <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; font-size: 11px; color: #64748b; line-height: 1.5;">
+          <div style="font-weight: 700; color: #334155; margin-bottom: 4px;">💡 投稿に関するご案内</div>
+          ・アップロードされた写真はコンペ運営用スライドショーのみに使用されます。<br>
+          ・同伴者の笑顔や豪快なスイングなど、何枚でもお気軽に送信してください！
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 下部固定タブバー（全5タブ） -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-tab="rules">
+        <i data-lucide="file-text"></i>
+        <span class="nav-label">要領</span>
+      </button>
+      <button class="nav-item" data-tab="pairings">
+        <i data-lucide="users"></i>
+        <span class="nav-label">組合せ</span>
+      </button>
+      <button class="nav-item" data-tab="course">
+        <i data-lucide="map"></i>
+        <span class="nav-label">コース</span>
+      </button>
+      <button class="nav-item" data-tab="prizes">
+        <i data-lucide="gift"></i>
+        <span class="nav-label">賞品</span>
+      </button>
+      <button class="nav-item" data-tab="photo">
+        <i data-lucide="camera"></i>
+        <span class="nav-label">写真投稿</span>
+      </button>
+    </nav>
+
+    <!-- 完了トースト通知 -->
+    <div id="app-toast" class="toast-notification"></div>
+
+  </div>
+
+  <!-- パスワード認証 ロック画面 -->
+  <div id="auth-overlay" class="auth-overlay">
+    <div class="auth-card" id="auth-card">
+      <div class="auth-icon-wrap">
+        <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
+      </div>
+      <h2 class="auth-title">関係者専用アクセス</h2>
+      <p class="auth-desc">
+        個人情報保護のため、大会関係者用パスワードを入力してください。
+      </p>
+
+      <form id="auth-form" onsubmit="return false;">
+        <div class="auth-input-group">
+          <input type="password" id="auth-password-input" class="auth-input" placeholder="パスワードを入力" autocomplete="current-password">
+          <button type="button" id="auth-toggle-pwd-btn" class="auth-toggle-pwd" title="パスワードを表示/非表示">
+            <i data-lucide="eye" id="auth-eye-icon" style="width: 18px; height: 18px;"></i>
+          </button>
+        </div>
+
+        <div id="auth-error-msg" class="auth-error">
+          ⚠️ パスワードが正しくありません
+        </div>
+
+        <label class="auth-remember-wrap">
+          <input type="checkbox" id="auth-remember-check" checked>
+          <span>この端末で次回から入力を省略する</span>
+        </label>
+
+        <button type="submit" id="auth-submit-btn" class="btn-primary">
+          <i data-lucide="unlock"></i>
+          <span>入場・ロック解除</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- アプリケーションデータ & スクリプト -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
