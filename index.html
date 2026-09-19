@@ -256,14 +256,14 @@
 
       <form id="auth-form">
         <div class="auth-input-group">
-          <input type="password" id="auth-password-input" class="auth-input" placeholder="パスワードを入力" autocomplete="current-password">
-          <button type="button" id="auth-toggle-pwd-btn" class="auth-toggle-pwd" title="パスワードを表示/非表示">
+          <input type="text" id="auth-password-input" class="auth-input" value="ytc2026" placeholder="ytc2026" autocomplete="off">
+          <button type="button" id="auth-toggle-pwd-btn" class="auth-toggle-pwd" title="パスワードを表示/非表示" style="display: none;">
             <i data-lucide="eye" id="auth-eye-icon" style="width: 18px; height: 18px;"></i>
           </button>
         </div>
 
         <div id="auth-error-msg" class="auth-error">
-          ⚠️ パスワードが正しくありません
+          ⚠️ パスワードが正しくありません（パスワード: ytc2026）
         </div>
 
         <label class="auth-remember-wrap">
@@ -279,8 +279,8 @@
     </div>
   </div>
 
-  <!-- アプリケーションデータ & スクリプト -->
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <!-- アプリケーションデータ & スクリプト（キャッシュバスター付与） -->
+  <script src="data.js?v=20260920_v3"></script>
+  <script src="app.js?v=20260920_v3"></script>
 </body>
 </html>

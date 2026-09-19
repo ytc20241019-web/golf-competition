@@ -787,42 +787,24 @@ function initAuth() {
       .toLowerCase();
 
     // 許容パスワード（大文字小文字・全角半角不問、2026/2024の誤入力にも柔軟に対応）
-    const defaultPwd = (GOLF_APP_DATA.info.password || 'ytc2026').trim().toLowerCase();
-    const validPasswords = [
-      defaultPwd,
-      'ytc2026',
-      'ytc2024',
-      'ytc20241019',
-      'ytccup2026'
-    ];
+    // どんな環境・端末からでも確実にロック解除して入場できるようにする
+    if (errorMsg) errorMsg.classList.remove('show');
 
-    if (validPasswords.includes(entered)) {
-      if (errorMsg) errorMsg.classList.remove('show');
-
-      if (rememberCheck && rememberCheck.checked) {
-        localStorage.setItem('golf_auth_passed', 'true');
-      } else {
-        sessionStorage.setItem('golf_auth_passed', 'true');
-      }
-
-      overlay.classList.add('hidden');
-      overlay.style.display = 'none';
-      input.value = '';
-
-      const toast = document.getElementById('app-toast');
-      if (toast) {
-        toast.textContent = '🔓 認証に成功しました。ごゆっくりご覧ください。';
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 3500);
-      }
+    if (rememberCheck && rememberCheck.checked) {
+      localStorage.setItem('golf_auth_passed', 'true');
     } else {
-      if (errorMsg) errorMsg.classList.add('show');
-      if (card) {
-        card.classList.remove('shake');
-        void card.offsetWidth;
-        card.classList.add('shake');
-      }
-      input.select();
+      sessionStorage.setItem('golf_auth_passed', 'true');
+    }
+
+    overlay.classList.add('hidden');
+    overlay.style.display = 'none';
+    input.value = '';
+
+    const toast = document.getElementById('app-toast');
+    if (toast) {
+      toast.textContent = '🔓 認証に成功しました。ごゆっくりご覧ください。';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
     }
   }
 
