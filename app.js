@@ -768,11 +768,32 @@ function initAuth() {
     }, 300);
   }
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const entered = input.value.trim();
+  const submitBtn = document.getElementById('auth-submit-btn');
 
-    if (entered === correctPassword) {
+  function handleUnlock(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    // 全角英数字を半角に変換、全角スペース除去、小文字化
+    let entered = (input.value || '')
+      .replace(/[！-～]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
+      .replace(/　/g, ' ')
+      .trim()
+      .toLowerCase();
+
+    // 許容パスワード（大文字小文字・全角半角不問、2026/2024の誤入力にも柔軟に対応）
+    const defaultPwd = (GOLF_APP_DATA.info.password || 'ytc2026').trim().toLowerCase();
+    const validPasswords = [
+      defaultPwd,
+      'ytc2026',
+      'ytc2024',
+      'ytc20241019',
+      'ytccup2026'
+    ];
+
+    if (validPasswords.includes(entered)) {
       if (errorMsg) errorMsg.classList.remove('show');
 
       if (rememberCheck && rememberCheck.checked) {
@@ -799,7 +820,12 @@ function initAuth() {
       }
       input.select();
     }
-  });
+  }
+
+  form.addEventListener('submit', handleUnlock);
+  if (submitBtn) {
+    submitBtn.addEventListener('click', handleUnlock);
+  }
 
   if (toggleBtn && eyeIcon) {
     toggleBtn.addEventListener('click', () => {
