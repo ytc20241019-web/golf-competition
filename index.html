@@ -25,7 +25,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260920_v5">
 </head>
 <body>
 
@@ -244,6 +244,21 @@
       </button>
     </nav>
 
+    <!-- ホーム画面追加 案内バナー (Androidワンタップ追加 / iOS共有案内) -->
+    <div id="pwa-install-banner" class="pwa-banner">
+      <div class="pwa-banner-inner">
+        <img src="icon-192.png" alt="アプリ" class="pwa-banner-icon">
+        <div class="pwa-banner-text">
+          <div class="pwa-banner-title">ホーム画面に追加してアプリ化！</div>
+          <div class="pwa-banner-desc" id="pwa-banner-desc">ワンタップでいつでもスムーズに開けます</div>
+        </div>
+        <div class="pwa-banner-actions">
+          <button type="button" id="pwa-install-btn" class="pwa-btn-install">追加</button>
+          <button type="button" id="pwa-close-btn" class="pwa-btn-close" title="閉じる">&times;</button>
+        </div>
+      </div>
+    </div>
+
     <!-- 完了トースト通知 -->
     <div id="app-toast" class="toast-notification"></div>
 
@@ -286,7 +301,7 @@
   </div>
 
   <!-- アプリケーションデータ & スクリプト（キャッシュバスター付与） -->
-  <script src="data.js?v=20260920_v4"></script>
-  <script src="app.js?v=20260920_v4"></script>
+  <script src="data.js?v=20260920_v5"></script>
+  <script src="app.js?v=20260920_v5"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@ function initApp() {
   initCourseGuide();
   renderPrizes();
   initPhotoUpload();
+  initPwaInstallBanner();
 
   if (window.lucide) {
     window.lucide.createIcons();
@@ -808,6 +809,10 @@ function initAuth() {
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 3500);
       }
+
+      if (window.triggerPwaBanner) {
+        setTimeout(window.triggerPwaBanner, 1000);
+      }
     } else {
       if (errorMsg) errorMsg.classList.add('show');
       if (card) {
@@ -851,3 +856,136 @@ function initAuth() {
     });
   }
 }
+
+/* ===================================================
+   10. PWA ホーム画面追加バナー制御
+=================================================== */
+let deferredPwaPrompt = null;
+
+function initPwaInstallBanner() {
+  const banner = document.getElementById('pwa-install-banner');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const closeBtn = document.getElementById('pwa-close-btn');
+  const descEl = document.getElementById('pwa-banner-desc');
+
+  if (!banner || !installBtn || !closeBtn) return;
+
+  // すでにホーム画面から全画面（スタンドアロン）で起動されている場合は表示しない
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                       window.navigator.standalone === true;
+  if (isStandalone) {
+    banner.style.display = 'none';
+    return;
+  }
+
+  // 閉じるボタンが押された記録がある場合はスキップ
+  if (sessionStorage.getItem('golf_pwa_dismissed') === '1') {
+    return;
+  }
+
+  function isAuthPassed() {
+    return localStorage.getItem('golf_auth_passed') === 'true' ||
+           sessionStorage.getItem('golf_auth_passed') === 'true';
+  }
+
+  function showBanner() {
+    if (isStandalone) return;
+    if (sessionStorage.getItem('golf_pwa_dismissed') === '1') return;
+    banner.classList.add('show');
+  }
+
+  // アプリ側（認証直後など）から呼べるように公開
+  window.triggerPwaBanner = showBanner;
+
+  // デバイス・ブラウザ判定
+  const ua = window.navigator.userAgent.toLowerCase();
+  const isIos = /iphone|ipad|ipod/.test(ua);
+
+  // iOS Safari用の案内文調整
+  if (isIos && descEl) {
+    descEl.innerHTML = '画面下の <i data-lucide="share" style="width: 13px; height: 13px; display: inline-block; vertical-align: -2px;"></i> ボタンから簡単に追加';
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  // Android / PC Chrome: beforeinstallprompt イベント捕捉
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPwaPrompt = e;
+    if (isAuthPassed()) {
+      showBanner();
+    }
+  });
+
+  // すでに認証済みで開いた場合、少し待ってからバナー表示
+  if (isAuthPassed()) {
+    setTimeout(showBanner, 1200);
+  }
+
+  // 追加ボタンクリック時の動作
+  installBtn.addEventListener('click', async () => {
+    if (deferredPwaPrompt) {
+      // Android / Chrome: ネイティブインストールプロンプトを起動
+      deferredPwaPrompt.prompt();
+      const { outcome } = await deferredPwaPrompt.userChoice;
+      if (outcome === 'accepted') {
+        banner.classList.remove('show');
+      }
+      deferredPwaPrompt = null;
+    } else if (isIos) {
+      // iOS Safari: 丁寧な手順案内モーダルを表示
+      showIosInstallModal();
+    } else {
+      // その他のブラウザ: 案内表示
+      alert('ブラウザメニュー（︙など）から「ホーム画面に追加」または「アプリをインストール」を選択してください。');
+    }
+  });
+
+  // 閉じるボタン
+  closeBtn.addEventListener('click', () => {
+    banner.classList.remove('show');
+    sessionStorage.setItem('golf_pwa_dismissed', '1');
+  });
+
+  // iOS専用ガイドモーダル
+  function showIosInstallModal() {
+    const existing = document.getElementById('ios-guide-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'ios-guide-modal';
+    modal.className = 'ios-guide-modal';
+    modal.innerHTML = `
+      <div class="ios-guide-card">
+        <h3 class="ios-guide-title">
+          <span>📲</span>
+          <span>ホーム画面に追加する方法</span>
+        </h3>
+        <div class="ios-guide-steps">
+          <div class="ios-guide-step-item">
+            <span class="ios-guide-num">1</span>
+            <div>Safari画面下部の <strong>共有ボタン</strong>（<i data-lucide="share" style="width: 15px; height: 15px; display: inline-block; vertical-align: -2px; color: #0284c7;"></i> 四角から上矢印）をタップします。</div>
+          </div>
+          <div class="ios-guide-step-item">
+            <span class="ios-guide-num">2</span>
+            <div>メニューを少し下へスクロールし、<strong>「ホーム画面に追加」</strong>（<i data-lucide="plus-square" style="width: 15px; height: 15px; display: inline-block; vertical-align: -2px;"></i>）をタップします。</div>
+          </div>
+          <div class="ios-guide-step-item">
+            <span class="ios-guide-num">3</span>
+            <div>画面右上の <strong>「追加」</strong> をタップすると、ホーム画面に専用アイコンが配置されます！</div>
+          </div>
+        </div>
+        <button type="button" class="ios-guide-btn-close" id="ios-guide-close-btn">わかりました</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    if (window.lucide) window.lucide.createIcons();
+
+    document.getElementById('ios-guide-close-btn').addEventListener('click', () => {
+      modal.remove();
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+  }
+}
+
