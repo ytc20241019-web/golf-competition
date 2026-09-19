@@ -1044,6 +1044,20 @@ function initAuth() {
     });
   }
 
+  const refreshBtn = document.getElementById('btn-refresh-app');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      const toast = document.getElementById('app-toast');
+      if (toast) {
+        toast.textContent = '🔄 最新情報を受信しています...';
+        toast.classList.add('show');
+      }
+      setTimeout(() => {
+        window.location.href = window.location.pathname + '?reload=' + Date.now();
+      }, 400);
+    });
+  }
+
   if (lockBtn) {
     lockBtn.addEventListener('click', () => {
       localStorage.removeItem('golf_auth_passed');

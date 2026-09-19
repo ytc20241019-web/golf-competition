@@ -8,13 +8,17 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="YTCゴルフコンペ">
   
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
   <title>第4回 YTCカップ ゴルフコンペ</title>
 
   <!-- ファビコン & ホーム画面アプリアイコン（iOS / Android対応） -->
-  <link rel="icon" type="image/jpeg" href="icon.jpg?v=20260920_v6">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260920_v6">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260920_v6">
-  <link rel="manifest" href="manifest.json?v=20260920_v6">
+  <link rel="icon" type="image/jpeg" href="icon.jpg?v=20260920_v12">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260920_v12">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260920_v12">
+  <link rel="manifest" href="manifest.json?v=20260920_v12">
 
   <!-- Google Fonts: Noto Sans JP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +29,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=20260920_v8">
+  <link rel="stylesheet" href="style.css?v=20260920_v12">
 </head>
 <body>
 
@@ -48,10 +52,16 @@
             <span>ムーンレイクGC 鞍手コース (10/10)</span>
           </div>
         </div>
-        <button id="btn-lock-app" class="btn-header-lock" title="画面をロックする">
-          <i data-lucide="lock" style="width: 13px; height: 13px;"></i>
-          <span>ロック</span>
-        </button>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <button id="btn-refresh-app" class="btn-header-lock" title="最新情報に更新">
+            <i data-lucide="rotate-cw" style="width: 13px; height: 13px;"></i>
+            <span>更新</span>
+          </button>
+          <button id="btn-lock-app" class="btn-header-lock" title="画面をロックする">
+            <i data-lucide="lock" style="width: 13px; height: 13px;"></i>
+            <span>ロック</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -333,7 +343,7 @@
   </div>
 
   <!-- アプリケーションデータ & スクリプト（キャッシュバスター付与） -->
-  <script src="data.js?v=20260920_v11"></script>
-  <script src="app.js?v=20260920_v8"></script>
+  <script src="data.js?v=20260920_v12"></script>
+  <script src="app.js?v=20260920_v12"></script>
 </body>
 </html>
