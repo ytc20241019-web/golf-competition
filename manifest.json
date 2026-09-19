@@ -1,0 +1,26 @@
+{
+  "name": "第4回 YTCカップ ゴルフコンペ",
+  "short_name": "YTCゴルフ",
+  "description": "第4回 YTCカップゴルフコンペ 参加者用スマートガイド",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1b5e20",
+  "theme_color": "#1b5e20",
+  "icons": [
+    {
+      "src": "icon.jpg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
