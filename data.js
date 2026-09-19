@@ -1451,7 +1451,3 @@ const GOLF_APP_DATA = {
 ]
 };
 
-/**
- * 写真アップロード先Google Apps Script（GAS）ウェブアプリURL
- */
-const GAS_UPLOAD_ENDPOINT_URL = '';
