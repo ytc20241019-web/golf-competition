@@ -567,20 +567,26 @@ function getPrizeIcon(type) {
 }
 
 /* ===================================================
-   6. タブ5：📸 写真投稿（Photo Upload & GAS Integration）
+   6. タブ5：写真投稿（複数選択・一括アップロード & GAS連携）
 =================================================== */
 function initPhotoUpload() {
   const authorSelect = document.getElementById('photo-author-select');
   const fileInput = document.getElementById('photo-file-input');
   const dropzone = document.getElementById('photo-dropzone');
   const previewContainer = document.getElementById('photo-preview-container');
-  const previewImg = document.getElementById('photo-preview-img');
-  const removeBtn = document.getElementById('photo-remove-btn');
+  const previewGrid = document.getElementById('photo-preview-grid');
+  const countBadge = document.getElementById('photo-count-badge');
+  const clearAllBtn = document.getElementById('photo-clear-all-btn');
+  const addMoreBtn = document.getElementById('photo-add-more-btn');
+  const progressWrap = document.getElementById('photo-progress-wrap');
+  const progressStatus = document.getElementById('photo-progress-status');
+  const progressPercent = document.getElementById('photo-progress-percent');
+  const progressBar = document.getElementById('photo-progress-bar');
   const uploadBtn = document.getElementById('photo-upload-btn');
+  const uploadBtnText = document.getElementById('photo-upload-btn-text');
   const toast = document.getElementById('app-toast');
 
-  let selectedFile = null;
-  let base64Data = null;
+  let selectedFiles = []; // { id, name, dataUrl }
 
   if (authorSelect) {
     authorSelect.innerHTML = `
@@ -593,12 +599,19 @@ function initPhotoUpload() {
     if (savedName) {
       authorSelect.value = savedName;
     }
+    authorSelect.addEventListener('change', () => {
+      if (authorSelect.value) {
+        localStorage.setItem('golf_my_name', authorSelect.value);
+      }
+    });
   }
 
   if (fileInput) {
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      handleFileSelected(file);
+    fileInput.addEventListener('change', async (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        await handleFilesSelected(Array.from(e.target.files));
+        fileInput.value = '';
+      }
     });
   }
 
@@ -616,83 +629,174 @@ function initPhotoUpload() {
       dropzone.classList.remove('dragover');
     });
 
-    dropzone.addEventListener('drop', (e) => {
+    dropzone.addEventListener('drop', async (e) => {
       e.preventDefault();
       dropzone.classList.remove('dragover');
-      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        handleFileSelected(e.dataTransfer.files[0]);
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        await handleFilesSelected(Array.from(e.dataTransfer.files));
       }
     });
   }
 
-  function handleFileSelected(file) {
-    if (!file || !file.type.startsWith('image/')) {
-      showToast('⚠️ 画像ファイルを選択してください');
-      return;
-    }
-
-    selectedFile = file;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      base64Data = e.target.result;
-      if (previewImg) previewImg.src = base64Data;
-      if (previewContainer) previewContainer.style.display = 'block';
-      if (dropzone) dropzone.style.display = 'none';
-      if (uploadBtn) uploadBtn.disabled = false;
-    };
-    reader.readAsDataURL(file);
+  if (addMoreBtn) {
+    addMoreBtn.addEventListener('click', () => {
+      if (fileInput) fileInput.click();
+    });
   }
 
-  if (removeBtn) {
-    removeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
+  if (clearAllBtn) {
+    clearAllBtn.addEventListener('click', () => {
       resetPhotoForm();
     });
   }
 
-  function resetPhotoForm() {
-    selectedFile = null;
-    base64Data = null;
-    if (fileInput) fileInput.value = '';
-    if (previewImg) previewImg.src = '';
-    if (previewContainer) previewContainer.style.display = 'none';
-    if (dropzone) dropzone.style.display = 'flex';
-    if (uploadBtn) uploadBtn.disabled = true;
+  // 複数ファイルの読み込みと圧縮処理
+  async function handleFilesSelected(files) {
+    const validImages = files.filter(f => f.type.startsWith('image/'));
+    if (validImages.length === 0) {
+      showToast('⚠️ 画像ファイル（JPG, PNG, HEICなど）を選択してください');
+      return;
+    }
+
+    if (uploadBtn) {
+      uploadBtn.disabled = true;
+      if (uploadBtnText) uploadBtnText.textContent = `写真処理中... (${validImages.length}枚)`;
+    }
+
+    for (const file of validImages) {
+      try {
+        const compressedBase64 = await compressImageFile(file, 1600, 0.85);
+        selectedFiles.push({
+          id: 'photo_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+          name: file.name,
+          dataUrl: compressedBase64
+        });
+      } catch (err) {
+        console.error('Image compression error:', err);
+      }
+    }
+
+    renderPreviewGrid();
   }
 
+  // プレビューグリッド描画
+  function renderPreviewGrid() {
+    if (!previewGrid) return;
+
+    if (selectedFiles.length === 0) {
+      if (previewContainer) previewContainer.style.display = 'none';
+      if (dropzone) dropzone.style.display = 'flex';
+      if (uploadBtn) {
+        uploadBtn.disabled = true;
+        if (uploadBtnText) uploadBtnText.textContent = '写真をアップロードする';
+      }
+      return;
+    }
+
+    if (previewContainer) previewContainer.style.display = 'block';
+    if (dropzone) dropzone.style.display = 'none';
+    if (countBadge) countBadge.textContent = `📸 ${selectedFiles.length}枚 選択中`;
+
+    previewGrid.innerHTML = selectedFiles.map((item, idx) => `
+      <div class="photo-grid-item" data-id="${item.id}">
+        <img src="${item.dataUrl}" alt="プレビュー ${idx + 1}" class="photo-grid-thumb">
+        <button type="button" class="photo-grid-remove-btn" data-id="${item.id}" title="削除">
+          <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+        </button>
+      </div>
+    `).join('');
+
+    if (window.lucide) window.lucide.createIcons();
+
+    // 削除ボタン
+    previewGrid.querySelectorAll('.photo-grid-remove-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const removeId = btn.getAttribute('data-id');
+        selectedFiles = selectedFiles.filter(item => item.id !== removeId);
+        renderPreviewGrid();
+      });
+    });
+
+    if (uploadBtn) {
+      uploadBtn.disabled = false;
+      if (uploadBtnText) uploadBtnText.textContent = `選択した写真（${selectedFiles.length}枚）をアップロード`;
+    }
+  }
+
+  function resetPhotoForm() {
+    selectedFiles = [];
+    if (fileInput) fileInput.value = '';
+    if (previewGrid) previewGrid.innerHTML = '';
+    if (previewContainer) previewContainer.style.display = 'none';
+    if (dropzone) dropzone.style.display = 'flex';
+    if (progressWrap) progressWrap.style.display = 'none';
+    if (uploadBtn) {
+      uploadBtn.disabled = true;
+      if (uploadBtnText) uploadBtnText.textContent = '写真をアップロードする';
+    }
+  }
+
+  // アップロード実行（1枚ずつ確実に逐次送信）
   if (uploadBtn) {
     uploadBtn.addEventListener('click', async () => {
-      if (!selectedFile) {
+      if (selectedFiles.length === 0) {
         showToast('⚠️ 写真を選択してください');
         return;
       }
 
       const authorName = authorSelect ? (authorSelect.value || '匿名ゴルファー') : '参加者';
+      const totalCount = selectedFiles.length;
 
       uploadBtn.disabled = true;
-      uploadBtn.innerHTML = `
-        <div class="spinner"></div>
-        <span>アップロード送信中...</span>
-      `;
+      if (dropzone) dropzone.style.display = 'none';
+      if (previewContainer) previewContainer.style.display = 'none';
+      if (progressWrap) {
+        progressWrap.style.display = 'block';
+        if (progressBar) progressBar.style.width = '0%';
+        if (progressPercent) progressPercent.textContent = '0%';
+        if (progressStatus) progressStatus.textContent = `1 / ${totalCount} 枚目を送信中...`;
+      }
 
-      try {
-        const result = await uploadPhotoToGAS({
-          uploaderName: authorName,
-          filename: selectedFile.name,
-          file: base64Data
-        });
+      let successCount = 0;
+      let failCount = 0;
 
-        showToast(result.message || '📸 写真のアップロードが完了しました！表彰式スライドに反映されます。');
+      for (let i = 0; i < totalCount; i++) {
+        const photo = selectedFiles[i];
+        const currentNum = i + 1;
+
+        if (progressStatus) {
+          progressStatus.textContent = `${currentNum} / ${totalCount} 枚目を送信中...`;
+        }
+
+        try {
+          await uploadPhotoToGAS({
+            uploaderName: authorName,
+            filename: photo.name,
+            file: photo.dataUrl
+          });
+          successCount++;
+        } catch (err) {
+          console.error(`Upload error for photo ${currentNum}:`, err);
+          failCount++;
+        }
+
+        const pct = Math.round((currentNum / totalCount) * 100);
+        if (progressBar) progressBar.style.width = `${pct}%`;
+        if (progressPercent) progressPercent.textContent = `${pct}%`;
+      }
+
+      if (failCount === 0) {
+        showToast(`🎉 ${successCount}枚の写真をすべてアップロードしました！表彰式スライドに反映されます。`);
         resetPhotoForm();
-      } catch (err) {
-        console.error('Upload Error:', err);
-        showToast('❌ アップロードに失敗しました。電波の良い場所でお試しください。');
-      } finally {
-        uploadBtn.innerHTML = `
-          <i data-lucide="upload-cloud"></i>
-          <span>写真をアップロードする</span>
-        `;
-        if (window.lucide) window.lucide.createIcons();
+      } else if (successCount > 0) {
+        showToast(`⚠️ ${successCount}枚をアップロードしましたが、${failCount}枚が失敗しました。電波の良い場所で再送してください。`);
+        resetPhotoForm();
+      } else {
+        showToast('❌ アップロードに失敗しました。電波状況をご確認の上再度お試しください。');
+        if (progressWrap) progressWrap.style.display = 'none';
+        if (previewContainer) previewContainer.style.display = 'block';
+        uploadBtn.disabled = false;
       }
     });
   }
@@ -703,8 +807,44 @@ function initPhotoUpload() {
     toast.classList.add('show');
     setTimeout(() => {
       toast.classList.remove('show');
-    }, 3800);
+    }, 4500);
   }
+}
+
+/**
+ * クライアントサイド画像軽量化（長辺1600px・JPEG品質0.85圧縮）
+ */
+function compressImageFile(file, maxDim = 1600, quality = 0.85) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width;
+        let h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve(dataUrl);
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
 }
 
 // GASのWebアプリURL（Googleドライブ保存用エンドポイント）

@@ -902,6 +902,155 @@ body {
   cursor: pointer;
 }
 
+/* 複数写真プレビューグリッド UI */
+.multi-preview-container {
+  margin-top: 14px;
+}
+
+.multi-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.photo-count-badge {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.photo-clear-all-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.photo-clear-all-btn:hover {
+  background: #fee2e2;
+}
+
+.photo-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.photo-grid-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+}
+
+.photo-grid-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s;
+}
+
+.photo-grid-remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s;
+}
+
+.photo-grid-remove-btn:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.photo-add-more-btn {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px dashed var(--primary-light);
+  color: var(--primary-light);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.photo-add-more-btn:hover {
+  background: #f0fdf4;
+}
+
+/* アップロード進捗バー */
+.photo-progress-wrap {
+  margin-top: 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  animation: fadeIn 0.2s ease;
+}
+
+.photo-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.photo-progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.photo-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+
 /* ボタン */
 .btn-primary {
   width: 100%;

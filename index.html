@@ -25,7 +25,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=20260920_v5">
+  <link rel="stylesheet" href="style.css?v=20260920_v7">
 </head>
 <body>
 
@@ -177,35 +177,58 @@
             <select id="photo-author-select" class="custom-select" style="min-height: 44px;"></select>
           </div>
 
-          <!-- ファイル選択（隠しinput） -->
-          <input type="file" id="photo-file-input" accept="image/*" style="display: none;">
+          <!-- ファイル選択（隠しinput・複数選択可能） -->
+          <input type="file" id="photo-file-input" accept="image/*" multiple style="display: none;">
 
           <!-- アップロード ドロップゾーン -->
           <div id="photo-dropzone" class="upload-dropzone">
             <div style="width: 48px; height: 48px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center;">
-              <i data-lucide="image-plus" style="width: 24px; height: 24px;"></i>
+              <i data-lucide="images" style="width: 24px; height: 24px;"></i>
             </div>
             <div style="font-size: 14px; font-weight: 700; color: #1e293b;">
-              写真を撮影 または ライブラリから選択
+              写真をまとめて選択（複数枚OK）
             </div>
             <div style="font-size: 11px; color: #64748b;">
-              タップしてカメラ起動・アルバム選択（PNG, JPG, HEIC等）
+              タップしてアルバムから複数枚選択できます
             </div>
           </div>
 
-          <!-- プレビュー表示領域 -->
-          <div id="photo-preview-container" class="preview-container" style="display: none;">
-            <img id="photo-preview-img" class="preview-img" src="" alt="アップロードプレビュー">
-            <button id="photo-remove-btn" class="preview-remove-btn" title="写真を削除">
-              <i data-lucide="x"></i>
+          <!-- 複数プレビュー表示領域 -->
+          <div id="photo-preview-container" class="multi-preview-container" style="display: none;">
+            <div class="multi-preview-header">
+              <span id="photo-count-badge" class="photo-count-badge">📸 0枚選択中</span>
+              <button type="button" id="photo-clear-all-btn" class="photo-clear-all-btn">
+                <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+                <span>すべて削除</span>
+              </button>
+            </div>
+
+            <!-- サムネイルグリッド -->
+            <div id="photo-preview-grid" class="photo-preview-grid"></div>
+
+            <!-- さらに写真を追加するボタン -->
+            <button type="button" id="photo-add-more-btn" class="photo-add-more-btn">
+              <i data-lucide="plus-circle" style="width: 16px; height: 16px;"></i>
+              <span>さらに写真を追加</span>
             </button>
+          </div>
+
+          <!-- アップロード進捗バー（送信時に表示） -->
+          <div id="photo-progress-wrap" class="photo-progress-wrap" style="display: none;">
+            <div class="photo-progress-info">
+              <span id="photo-progress-status">アップロード準備中...</span>
+              <span id="photo-progress-percent">0%</span>
+            </div>
+            <div class="photo-progress-track">
+              <div id="photo-progress-bar" class="photo-progress-bar" style="width: 0%;"></div>
+            </div>
           </div>
 
           <!-- アップロード実行ボタン -->
           <div style="margin-top: 14px;">
             <button id="photo-upload-btn" class="btn-primary" disabled>
               <i data-lucide="upload-cloud"></i>
-              <span>写真をアップロードする</span>
+              <span id="photo-upload-btn-text">写真をアップロードする</span>
             </button>
           </div>
         </div>
@@ -302,6 +325,6 @@
 
   <!-- アプリケーションデータ & スクリプト（キャッシュバスター付与） -->
   <script src="data.js?v=20260920_v5"></script>
-  <script src="app.js?v=20260920_v5"></script>
+  <script src="app.js?v=20260920_v7"></script>
 </body>
 </html>
