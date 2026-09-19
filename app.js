@@ -776,10 +776,13 @@ function initAuth() {
       e.stopPropagation();
     }
 
-    // 全角英数字を半角に変換、全角スペース除去、小文字化
-    let entered = (input.value || '')
-      .replace(/[！-～]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
-      .replace(/　/g, ' ')
+    // 全角英数字・記号を半角に安全に変換（Unicodeエスケープ使用で文字化けゼロ）
+    let raw = (input.value || '').trim();
+    let entered = raw
+      .replace(/[\uFF01-\uFF5E]/g, function(s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+      })
+      .replace(/\u3000/g, ' ')
       .trim()
       .toLowerCase();
 
@@ -803,6 +806,7 @@ function initAuth() {
       }
 
       overlay.classList.add('hidden');
+      overlay.style.display = 'none';
       input.value = '';
 
       const toast = document.getElementById('app-toast');
