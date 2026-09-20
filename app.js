@@ -100,6 +100,21 @@ function renderRulesAndSchedule() {
             </div>
             <div style="font-size: 12px; color: #78350f; line-height: 1.6; white-space: pre-line;">${data.info.dressCode}</div>
           </div>
+          ${data.info.selfStyleNotice ? `
+          <div style="background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 8px; padding: 12px; margin-top: 10px;">
+            <div style="font-weight: 700; font-size: 13px; color: #0369a1; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+              <i data-lucide="info" style="width: 16px; height: 16px; color: #0284c7;"></i>
+              <span>${data.info.selfStyleNotice.title}</span>
+            </div>
+            <div style="font-size: 12px; color: #0c4a6e; line-height: 1.6;">
+              <p style="margin: 0 0 6px 0; font-weight: 600;">${data.info.selfStyleNotice.lead}</p>
+              <ul style="margin: 0 0 6px 0; padding-left: 20px; line-height: 1.7;">
+                ${data.info.selfStyleNotice.items.map(it => `<li><strong>${it}</strong></li>`).join('')}
+              </ul>
+              <div style="font-size: 11px; color: #0284c7;">${data.info.selfStyleNotice.note}</div>
+            </div>
+          </div>
+          ` : ''}
         </div>
       </div>
     `;
@@ -220,6 +235,10 @@ function renderRulesAndSchedule() {
         </div>
       </div>
     `).join('');
+  }
+
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
 }
 
