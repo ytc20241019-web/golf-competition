@@ -564,11 +564,13 @@ function renderPrizes() {
         </div>
       ` : '';
 
-      // 部門長賞の全28賞内訳展開アコーディオン
+      // 役員賞・部門長賞の内訳展開アコーディオン
+      const openLabel = p.btnLabel || '協賛一覧を見る';
+      const closeLabel = p.closeLabel || '協賛一覧を閉じる';
       const deptsHtml = p.depts ? `
         <div style="margin-top: 8px;">
-          <button type="button" class="btn-toggle-depts" style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; width: 100%; justify-content: center;">
-            <span>全28賞の協賛部門一覧を見る</span>
+          <button type="button" class="btn-toggle-depts" data-open-label="${openLabel}" data-close-label="${closeLabel}" style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; width: 100%; justify-content: center;">
+            <span>${openLabel}</span>
             <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
           </button>
           <div class="depts-grid" style="display: none; grid-template-columns: repeat(2, 1fr); gap: 4px; margin-top: 6px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; font-size: 11px; color: #334155;">
@@ -600,7 +602,7 @@ function renderPrizes() {
       `;
     }).join('');
 
-    // 部門長アコーディオンのイベント登録
+    // 部門長・役員賞アコーディオンのイベント登録
     prizesContainer.querySelectorAll('.btn-toggle-depts').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -608,7 +610,9 @@ function renderPrizes() {
         const icon = btn.querySelector('i');
         const isOpen = content.style.display === 'grid';
         content.style.display = isOpen ? 'none' : 'grid';
-        btn.querySelector('span').textContent = isOpen ? '全28賞の協賛部門一覧を見る' : '協賛部門一覧を閉じる';
+        const openText = btn.getAttribute('data-open-label') || '協賛一覧を見る';
+        const closeText = btn.getAttribute('data-close-label') || '協賛一覧を閉じる';
+        btn.querySelector('span').textContent = isOpen ? openText : closeText;
         if (icon) {
           icon.setAttribute('data-lucide', isOpen ? 'chevron-down' : 'chevron-up');
         }
