@@ -259,12 +259,12 @@ const GOLF_APP_DATA = {
       btnLabel: '役員協賛（4位～9位）の内訳を見る',
       closeLabel: '役員協賛の内訳を閉じる',
       depts: [
-        '4位: (総本)',
-        '5位: (CB本)',
+        '4位: (AI統)',
+        '5位: (総本)',
         '6位: (R)',
-        '7位: (経本)',
-        '8位: (V)',
-        '9位: (M)'
+        '7位: (V)',
+        '8位: (品本)',
+        '9位: (生本)'
       ]
     },
     {
@@ -277,14 +277,14 @@ const GOLF_APP_DATA = {
       btnLabel: '協賛部門一覧（22賞）を見る',
       closeLabel: '協賛部門一覧を閉じる',
       depts: [
-        '10位: (品本)',
-        '13位: (AI統)',
-        '15位: (生本)',
-        '18位: (技本)',
-        '20位: (L社)',
-        '22位: (栄社)',
-        '24位: (YOC社)',
-        '26位: (F社)',
+        '10位: (技本)',
+        '12位: (F社)',
+        '14位: (L社)',
+        '16位: (栄社)',
+        '18位: (YOC社)',
+        '20位: (CB本)',
+        '23位: (経本)',
+        '25位: (M)',
         '30位: (RE)',
         '33位: (東科大)',
         '35位: (GCM)',
@@ -294,20 +294,20 @@ const GOLF_APP_DATA = {
         '45位: (RC)',
         '48位: (M工産)',
         '50位: (品本証)',
-        '54位: (生技)次',
-        '58位: (人労)次',
-        '60位: (R技Ｐ)',
+        '54位: (R技P)',
+        '58位: (生技)次',
+        '60位: (人事)次',
         '64位: (T推)',
         '68位: (技管)'
       ]
     },
     {
       category: '個人戦',
-      rank: 'BB賞（74位） 🍝',
-      title: 'ビストロ パスタセット',
-      desc: '次回は巻き返しを！美味しい特製パスタを味わって、次回コンペでのリベンジを誓いましょう。',
+      rank: 'BB賞（74位） 🍘',
+      title: '特選 めんべい・のりドレッシングセット',
+      desc: '次回は巻き返しを！福岡銘菓めんべいと特製のりドレッシングを味わって、次回コンペでのリベンジを誓いましょう。',
       tag: 'ブービー賞',
-      icon: 'utensils'
+      icon: 'gift'
     },
     {
       category: '個人戦',
@@ -318,71 +318,71 @@ const GOLF_APP_DATA = {
       icon: 'beer'
     },
 
-    // --- チーム戦（各チーム4名全員分！） ---
+    // --- チーム戦（各チーム全員分！） ---
     {
       category: 'チーム戦',
       rank: 'チーム 優勝 🏆',
-      title: '宮崎牛カルビ焼肉用（チーム4名様全員分！）',
-      desc: '息の合ったチームワークで見事栄冠を勝ち取った優勝チーム！メンバー4名全員に極上カルビを贈呈！',
-      tag: '4名全員分',
+      title: '宮崎牛カルビ焼肉用（チーム全員分！）',
+      desc: '息の合ったチームワークで見事栄冠を勝ち取った優勝チーム！メンバー全員に極上カルビを贈呈！',
+      tag: 'チーム全員分',
       icon: 'trophy',
       highlight: true
     },
     {
       category: 'チーム戦',
       rank: 'チーム 準優勝 🥈',
-      title: '特選 ハンバーグ詰合せ（チーム4名様全員分！）',
-      desc: '団結力で掴み取ったチーム準優勝！ジューシーで旨味たっぷりの本格ハンバーグを4名全員に。',
-      tag: '4名全員分',
+      title: '特選 ハンバーグ詰合せ（チーム全員分！）',
+      desc: '団結力で掴み取ったチーム準優勝！ジューシーで旨味たっぷりの本格ハンバーグを全員に。',
+      tag: 'チーム全員分',
       icon: 'medal',
       highlight: true
     },
     {
       category: 'チーム戦',
       rank: 'チーム 第3位 🥉',
-      title: '十勝橋本牧場 プレミアムアイスクリーム（チーム4名様全員分！）',
-      desc: 'チーム戦トップ3入賞！北海道の大自然が育んだ濃厚でクリーミーな極上アイスを4名全員に。',
-      tag: '4名全員分',
+      title: '十勝橋本牧場 プレミアムアイスクリーム（チーム全員分！）',
+      desc: 'チーム戦トップ3入賞！北海道の大自然が育んだ濃厚でクリーミーな極上アイスを全員に。',
+      tag: 'チーム全員分',
       icon: 'award'
     },
     {
       category: 'チーム戦',
       rank: 'チーム 5位（飛び賞） 🍖',
-      title: '日本ハム 美ノ国・吟王セット（チーム4名様全員分！）',
-      desc: 'ラッキーなチーム5位飛び賞！国産プレミアムハム・ソーセージの詰め合わせを4名全員に。',
-      tag: '4名全員分',
+      title: '日本ハム 美ノ国・吟王セット（チーム全員分！）',
+      desc: 'ラッキーなチーム5位飛び賞！国産プレミアムハム・ソーセージの詰め合わせを全員に。',
+      tag: 'チーム全員分',
       icon: 'gift'
     },
     {
       category: 'チーム戦',
       rank: 'チーム 10位（飛び賞） 🍝',
-      title: 'ビストロ パスタセット（チーム4名様全員分！）',
-      desc: '大会日10日にちなんだチーム10位賞！人気のパスタセットをメンバー4名全員に。',
-      tag: '4名全員分',
+      title: 'ビストロ パスタセット（チーム全員分！）',
+      desc: '大会日10日にちなんだチーム10位賞！人気のパスタセットをメンバー全員に。',
+      tag: 'チーム全員分',
       icon: 'utensils'
     },
     {
       category: 'チーム戦',
       rank: 'チーム 15位（飛び賞） 🍡',
-      title: 'ムーンレイク特選 塩味大福（8個入 × チーム4名全員！）',
+      title: 'ムーンレイク特選 塩味大福（8個入 × チーム全員！）',
       desc: 'ゴルフ場特選の絶品和スイーツ！ラウンドの疲れを癒やすほどよい塩味と甘みの大福。',
-      tag: '4名全員分',
+      tag: 'チーム全員分',
       icon: 'gift'
     },
     {
       category: 'チーム戦',
-      rank: 'チーム BB賞（19位） 🧀',
-      title: 'ムーンレイク特選 チーズケーキ（冷凍 × チーム4名全員！）',
-      desc: 'チームBB賞！濃厚でしっとり美味しいムーンレイク特選の冷凍チーズケーキを4名全員に。',
-      tag: '4名全員分',
+      rank: 'チーム BB賞（18位） 🧀',
+      title: 'ムーンレイク特選 チーズケーキ（冷凍 × チーム全員！）',
+      desc: 'チームBB賞！濃厚でしっとり美味しいムーンレイク特選の冷凍チーズケーキを全員に。',
+      tag: 'チーム全員分',
       icon: 'cake'
     },
     {
       category: 'チーム戦',
-      rank: 'チーム BM賞（20位） 🌸',
-      title: 'ムーンレイク特選 梅ケ枝餅（5個入 × チーム4名全員！）',
-      desc: 'チームBM賞！福岡名物の香ばしい焼き餅「梅ケ枝餅」をメンバー4名全員に。',
-      tag: '4名全員分',
+      rank: 'チーム BM賞（19位） 🌸',
+      title: 'ムーンレイク特選 梅ケ枝餅（5個入 × チーム全員！）',
+      desc: 'チームBM賞！福岡名物の香ばしい焼き餅「梅ケ枝餅」をメンバー全員に。',
+      tag: 'チーム全員分',
       icon: 'gift'
     },
 
@@ -464,16 +464,16 @@ const GOLF_APP_DATA = {
                 "isLeader": false
             },
             {
-                "name": "山崎 美和",
-                "dept": "経画",
-                "block": "本社棟",
-                "isLeader": false
-            },
-            {
                 "name": "平尾 光輝",
                 "dept": "V技開",
                 "block": "V",
                 "isLeader": true
+            },
+            {
+                "name": "山崎 美和",
+                "dept": "経画",
+                "block": "本社棟",
+                "isLeader": false
             }
         ]
     },
@@ -484,9 +484,9 @@ const GOLF_APP_DATA = {
         "cartNo": "No.02",
         "members": [
             {
-                "name": "林田　歩",
-                "dept": "CB本",
-                "block": "本社棟",
+                "name": "村井　真二",
+                "dept": "RE",
+                "block": "R",
                 "isLeader": false
             },
             {
@@ -496,16 +496,16 @@ const GOLF_APP_DATA = {
                 "isLeader": false
             },
             {
-                "name": "松尾 小巻",
-                "dept": "経OP",
-                "block": "本社棟",
-                "isLeader": false
-            },
-            {
                 "name": "家迫 慎一郎",
                 "dept": "YOCM",
                 "block": "YOC",
                 "isLeader": true
+            },
+            {
+                "name": "松尾 小巻",
+                "dept": "経OP",
+                "block": "本社棟",
+                "isLeader": false
             }
         ]
     },
@@ -592,16 +592,16 @@ const GOLF_APP_DATA = {
                 "isLeader": false
             },
             {
-                "name": "塚本 知明",
-                "dept": "品本証技",
-                "block": "品本",
-                "isLeader": false
-            },
-            {
                 "name": "長島 徳宏",
                 "dept": "内製技",
                 "block": "生本",
                 "isLeader": true
+            },
+            {
+                "name": "塚本 知明",
+                "dept": "品本証技",
+                "block": "品本",
+                "isLeader": false
             }
         ]
     },
@@ -612,20 +612,14 @@ const GOLF_APP_DATA = {
         "cartNo": "No.06",
         "members": [
             {
-                "name": "村井　真二",
-                "dept": "RE",
-                "block": "R",
-                "isLeader": false
-            },
-            {
                 "name": "末吉 礼明",
                 "dept": "VS",
                 "block": "V",
                 "isLeader": false
             },
             {
-                "name": "尾島 正夫",
-                "dept": "技析B",
+                "name": "田島 雄二",
+                "dept": "内製技",
                 "block": "生本",
                 "isLeader": false
             },
@@ -634,6 +628,12 @@ const GOLF_APP_DATA = {
                 "dept": "調開発",
                 "block": "調本",
                 "isLeader": true
+            },
+            {
+                "name": "尾島 正夫",
+                "dept": "技析B",
+                "block": "生本",
+                "isLeader": false
             }
         ]
     },
@@ -650,21 +650,15 @@ const GOLF_APP_DATA = {
                 "isLeader": false
             },
             {
-                "name": "大屋　広明",
-                "dept": "GCM",
-                "block": "V",
-                "isLeader": false
-            },
-            {
                 "name": "秋吉　亮治",
                 "dept": "AG開R",
                 "block": "技本",
                 "isLeader": true
             },
             {
-                "name": "空き",
-                "dept": "",
-                "block": "",
+                "name": "大屋　広明",
+                "dept": "VS企",
+                "block": "V",
                 "isLeader": false
             }
         ]
@@ -708,9 +702,9 @@ const GOLF_APP_DATA = {
         "cartNo": "No.09",
         "members": [
             {
-                "name": "一木 靖司",
-                "dept": "経本",
-                "block": "本社棟",
+                "name": "木谷 文彦",
+                "dept": "Ｍ工産",
+                "block": "M",
                 "isLeader": false
             },
             {
@@ -721,7 +715,7 @@ const GOLF_APP_DATA = {
             },
             {
                 "name": "宮脇　智寿子",
-                "dept": "R企販",
+                "dept": "Ｒ企販",
                 "block": "R",
                 "isLeader": false
             },
@@ -836,27 +830,21 @@ const GOLF_APP_DATA = {
         "cartNo": "No.13",
         "members": [
             {
-                "name": "加茂 孝雄",
-                "dept": "品本証",
-                "block": "品本",
+                "name": "松本 豊樹",
+                "dept": "L社",
+                "block": "生本",
                 "isLeader": false
             },
             {
-                "name": "植村　宙",
-                "dept": "GCM",
-                "block": "本社棟",
+                "name": "福田 大",
+                "dept": "YRM開T",
+                "block": "技本",
                 "isLeader": false
             },
             {
-                "name": "栗田 智裕",
-                "dept": "品本証S",
-                "block": "品本",
-                "isLeader": false
-            },
-            {
-                "name": "小林 民生",
-                "dept": "法務",
-                "block": "本社棟",
+                "name": "梶原　慎介",
+                "dept": "基開CA",
+                "block": "技本",
                 "isLeader": true
             }
         ]
@@ -970,9 +958,9 @@ const GOLF_APP_DATA = {
                 "isLeader": false
             },
             {
-                "name": "木谷 文彦",
-                "dept": "M工産",
-                "block": "M",
+                "name": "古川　伸征",
+                "dept": "RC",
+                "block": "R",
                 "isLeader": false
             },
             {
@@ -996,43 +984,37 @@ const GOLF_APP_DATA = {
         "cartNo": "No.18",
         "members": [
             {
-                "name": "松本 豊樹",
-                "dept": "L社",
-                "block": "生本",
+                "name": "加茂 孝雄",
+                "dept": "品本証",
+                "block": "品本",
                 "isLeader": false
             },
             {
-                "name": "古川　伸征",
-                "dept": "RC",
-                "block": "R",
+                "name": "植村　宙",
+                "dept": "GCM",
+                "block": "本社棟",
                 "isLeader": false
             },
             {
-                "name": "田島 雄二",
-                "dept": "内製技",
-                "block": "生本",
+                "name": "栗田 智裕",
+                "dept": "品本証S",
+                "block": "品本",
                 "isLeader": false
             },
             {
-                "name": "梶原　慎介",
-                "dept": "基開CA",
-                "block": "技本",
+                "name": "小林 民生",
+                "dept": "法務",
+                "block": "本社棟",
                 "isLeader": true
             }
         ]
     },
     {
-        "groupName": "西6",
+        "groupName": "西６",
         "course": "西コース → 東コース",
         "time": "09:38",
         "cartNo": "No.19",
         "members": [
-            {
-                "name": "福田 大",
-                "dept": "YRM開T",
-                "block": "技本",
-                "isLeader": false
-            },
             {
                 "name": "坪井 栄治",
                 "dept": "YOCT",
@@ -1055,15 +1037,8 @@ const GOLF_APP_DATA = {
     }
 ],
 
-  // 参加者簡易名簿（プルダウン選択・ピン留め用、AI分析は全削除）
+  // 参加者簡易名簿（プルダウン選択・ピン留め用）
   members: [
-    {
-        "name": "一木 靖司",
-        "dept": "経本",
-        "block": "本社棟",
-        "groupName": "中２",
-        "course": "中コース → 西コース"
-    },
     {
         "name": "中元 善太",
         "dept": "技管",
@@ -1124,8 +1099,8 @@ const GOLF_APP_DATA = {
         "name": "加茂 孝雄",
         "dept": "品本証",
         "block": "品本",
-        "groupName": "中６",
-        "course": "中コース → 西コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース"
     },
     {
         "name": "原 勝明",
@@ -1145,7 +1120,7 @@ const GOLF_APP_DATA = {
         "name": "古川　伸征",
         "dept": "RC",
         "block": "R",
-        "groupName": "西５",
+        "groupName": "西４",
         "course": "西コース → 東コース"
     },
     {
@@ -1187,7 +1162,7 @@ const GOLF_APP_DATA = {
         "name": "坪井 栄治",
         "dept": "YOCT",
         "block": "YOC",
-        "groupName": "西6",
+        "groupName": "西６",
         "course": "西コース → 東コース"
     },
     {
@@ -1201,7 +1176,7 @@ const GOLF_APP_DATA = {
         "name": "大井 貴登",
         "dept": "R技PH",
         "block": "R",
-        "groupName": "西6",
+        "groupName": "西６",
         "course": "西コース → 東コース"
     },
     {
@@ -1213,14 +1188,14 @@ const GOLF_APP_DATA = {
     },
     {
         "name": "大屋　広明",
-        "dept": "GCM",
+        "dept": "VS企",
         "block": "V",
         "groupName": "東７",
         "course": "東コース → 中コース"
     },
     {
         "name": "宮脇　智寿子",
-        "dept": "R企販",
+        "dept": "Ｒ企販",
         "block": "R",
         "groupName": "中２",
         "course": "中コース → 西コース"
@@ -1236,8 +1211,8 @@ const GOLF_APP_DATA = {
         "name": "小林 民生",
         "dept": "法務",
         "block": "本社棟",
-        "groupName": "中６",
-        "course": "中コース → 西コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース"
     },
     {
         "name": "尾島 正夫",
@@ -1332,10 +1307,10 @@ const GOLF_APP_DATA = {
     },
     {
         "name": "木谷 文彦",
-        "dept": "M工産",
+        "dept": "Ｍ工産",
         "block": "M",
-        "groupName": "西４",
-        "course": "西コース → 東コース"
+        "groupName": "中２",
+        "course": "中コース → 西コース"
     },
     {
         "name": "末吉 礼明",
@@ -1355,7 +1330,7 @@ const GOLF_APP_DATA = {
         "name": "村井　真二",
         "dept": "RE",
         "block": "R",
-        "groupName": "東６",
+        "groupName": "東２",
         "course": "東コース → 中コース"
     },
     {
@@ -1369,15 +1344,8 @@ const GOLF_APP_DATA = {
         "name": "松本 豊樹",
         "dept": "L社",
         "block": "生本",
-        "groupName": "西５",
-        "course": "西コース → 東コース"
-    },
-    {
-        "name": "林田　歩",
-        "dept": "CB本",
-        "block": "本社棟",
-        "groupName": "東２",
-        "course": "東コース → 中コース"
+        "groupName": "中６",
+        "course": "中コース → 西コース"
     },
     {
         "name": "柴田 悟",
@@ -1390,8 +1358,8 @@ const GOLF_APP_DATA = {
         "name": "栗田 智裕",
         "dept": "品本証S",
         "block": "品本",
-        "groupName": "中６",
-        "course": "中コース → 西コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース"
     },
     {
         "name": "桐野 博士",
@@ -1404,8 +1372,8 @@ const GOLF_APP_DATA = {
         "name": "梶原　慎介",
         "dept": "基開CA",
         "block": "技本",
-        "groupName": "西５",
-        "course": "西コース → 東コース"
+        "groupName": "中６",
+        "course": "中コース → 西コース"
     },
     {
         "name": "森田 卓寿",
@@ -1418,8 +1386,8 @@ const GOLF_APP_DATA = {
         "name": "植村　宙",
         "dept": "GCM",
         "block": "本社棟",
-        "groupName": "中６",
-        "course": "中コース → 西コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース"
     },
     {
         "name": "横尾 周洋",
@@ -1481,15 +1449,15 @@ const GOLF_APP_DATA = {
         "name": "田島 雄二",
         "dept": "内製技",
         "block": "生本",
-        "groupName": "西５",
-        "course": "西コース → 東コース"
+        "groupName": "東６",
+        "course": "東コース → 中コース"
     },
     {
         "name": "福田 大",
         "dept": "YRM開T",
         "block": "技本",
-        "groupName": "西6",
-        "course": "西コース → 東コース"
+        "groupName": "中６",
+        "course": "中コース → 西コース"
     },
     {
         "name": "秋吉　亮治",
@@ -1530,7 +1498,7 @@ const GOLF_APP_DATA = {
         "name": "華 炎",
         "dept": "調開発",
         "block": "調本",
-        "groupName": "西6",
+        "groupName": "西６",
         "course": "西コース → 東コース"
     },
     {
@@ -1584,4 +1552,3 @@ const GOLF_APP_DATA = {
     }
 ]
 };
-
