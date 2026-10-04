@@ -991,7 +991,9 @@ function initAuth() {
 
   if (isAuthorized) {
     overlay.classList.add('hidden');
+    overlay.style.display = 'none';
   } else {
+    overlay.style.display = '';
     overlay.classList.remove('hidden');
     setTimeout(() => {
       input.focus();
@@ -1087,6 +1089,7 @@ function initAuth() {
       sessionStorage.removeItem('golf_auth_passed');
       if (errorMsg) errorMsg.classList.remove('show');
       input.value = '';
+      overlay.style.display = '';
       overlay.classList.remove('hidden');
       setTimeout(() => input.focus(), 200);
 
