@@ -319,11 +319,16 @@ function initPairings() {
         return true;
       });
 
-      // エチケットリーダー注意喚起バナー
+      // エチケットリーダー・初参加の案内バナー
       const bannerHtml = `
-        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; font-size: 12px; color: #1e40af; display: flex; align-items: center; gap: 8px;">
-          <i data-lucide="info" style="width: 16px; height: 16px; flex-shrink: 0; color: #2563eb;"></i>
-          <span><strong>※ エチケットリーダー：</strong>スコア入力忘れないようにフォローをお願いします。</span>
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; font-size: 12px; color: #1e40af; display: flex; flex-direction: column; gap: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <i data-lucide="info" style="width: 15px; height: 15px; flex-shrink: 0; color: #2563eb;"></i>
+            <span><strong>※ エチケットリーダー：</strong>スコア入力忘れないようにフォローをお願いします。</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; padding-left: 21px;">
+            <span><strong>※ 🔰 初参加：</strong>初参加の皆様です。温かいサポートをお願いします！</span>
+          </div>
         </div>
       `;
 
@@ -358,11 +363,14 @@ function initPairings() {
             return `
               <div class="member-item ${isMe ? 'is-me' : ''}">
                 <div class="member-name" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
-                  <div style="display: flex; align-items: center; gap: 4px;">
+                  <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
                     <span>${m.name}</span>
                     ${isMe ? '<span style="font-size: 9px; background: #f59e0b; color: white; padding: 1px 4px; border-radius: 3px;">あなた</span>' : ''}
                   </div>
-                  ${m.isLeader ? '<span style="background: #dc2626; color: #ffffff; font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; display: inline-block; margin-top: 1px;">エチケットリーダー</span>' : ''}
+                  <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-top: 2px;">
+                    ${m.isLeader ? '<span class="leader-badge">エチケットリーダー</span>' : ''}
+                    ${m.isFirstTimer ? '<span class="first-timer-badge">🔰 初参加</span>' : ''}
+                  </div>
                 </div>
                 <div class="member-dept" style="margin-top: 4px;">${m.dept} / ${m.block}</div>
               </div>

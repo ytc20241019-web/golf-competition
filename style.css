@@ -485,8 +485,21 @@ body {
   color: #ffffff;
   font-size: 9px;
   font-weight: 700;
-  padding: 1px 4px;
+  padding: 1px 5px;
   border-radius: 3px;
+  display: inline-block;
+  line-height: 1.4;
+}
+
+.first-timer-badge {
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  display: inline-block;
+  line-height: 1.4;
 }
 
 /* プルダウン選択UI */

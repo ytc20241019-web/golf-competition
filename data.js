@@ -243,7 +243,7 @@ const GOLF_APP_DATA = {
     {
       category: '個人戦',
       rank: '個人 第3位 🥉',
-      title: '熊本 ふじ馬刺しセット',
+      title: '熊本県産 ふじ馬刺しセット',
       desc: 'トップ争いを演じた第3位入賞者へ！本場熊本の新鮮で旨み溢れる絶品馬刺し詰め合わせ。',
       tag: '個人3位',
       icon: 'award',
@@ -260,7 +260,7 @@ const GOLF_APP_DATA = {
       closeLabel: '役員協賛の内訳を閉じる',
       depts: [
         '4位: (AI統)',
-        '5位: (総本)',
+        '5位: (YAI)',
         '6位: (R)',
         '7位: (V)',
         '8位: (品本)',
@@ -283,8 +283,9 @@ const GOLF_APP_DATA = {
         '16位: (栄社)',
         '18位: (YOC社)',
         '20位: (CB本)',
-        '23位: (経本)',
-        '25位: (M)',
+        '23位: (総本)',
+        '25位: (経本)',
+        '28位: (M)',
         '30位: (RE)',
         '33位: (東科大)',
         '35位: (GCM)',
@@ -455,25 +456,29 @@ const GOLF_APP_DATA = {
                 "name": "桐野 博士",
                 "dept": "GCM",
                 "block": "M",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "原 勝明",
                 "dept": "生技",
                 "block": "生本",
-                "isLeader": false
-            },
-            {
-                "name": "平尾 光輝",
-                "dept": "V技開",
-                "block": "V",
-                "isLeader": true
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "山崎 美和",
                 "dept": "経画",
                 "block": "本社棟",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
+            },
+            {
+                "name": "平尾 光輝",
+                "dept": "V技開",
+                "block": "V",
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -484,28 +489,32 @@ const GOLF_APP_DATA = {
         "cartNo": "No.02",
         "members": [
             {
-                "name": "村井　真二",
-                "dept": "RE",
-                "block": "R",
-                "isLeader": false
-            },
-            {
                 "name": "吉武 博利",
                 "dept": "品本企S",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "家迫 慎一郎",
                 "dept": "YOCM",
                 "block": "YOC",
-                "isLeader": true
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "松尾 小巻",
                 "dept": "経OP",
                 "block": "本社棟",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
+            },
+            {
+                "name": "秋吉　亮治",
+                "dept": "AG開R",
+                "block": "技本",
+                "isLeader": true,
+                "isFirstTimer": true
             }
         ]
     },
@@ -519,25 +528,29 @@ const GOLF_APP_DATA = {
                 "name": "久保田 由美恵",
                 "dept": "AI統",
                 "block": "技本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "岡久 学",
                 "dept": "R",
                 "block": "R",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "原 英則",
                 "dept": "技本",
                 "block": "技本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": true
             },
             {
                 "name": "山本 栄治",
                 "dept": "技管",
                 "block": "技本",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -548,28 +561,32 @@ const GOLF_APP_DATA = {
         "cartNo": "No.04",
         "members": [
             {
-                "name": "山田　達哉",
-                "dept": "総本",
-                "block": "本社棟",
-                "isLeader": false
-            },
-            {
                 "name": "赤星 孝行",
                 "dept": "T推",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "國田 和孝",
                 "dept": "YOCT",
                 "block": "YOC",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": true
+            },
+            {
+                "name": "大屋 広明",
+                "dept": "GCM",
+                "block": "V",
+                "isLeader": false,
+                "isFirstTimer": true
             },
             {
                 "name": "浅井 雄介",
                 "dept": "M開S1",
                 "block": "M",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -583,25 +600,29 @@ const GOLF_APP_DATA = {
                 "name": "柴田 悟",
                 "dept": "栄社",
                 "block": "本社棟",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "清水 宏一",
                 "dept": "人労 次",
                 "block": "本社棟",
-                "isLeader": false
-            },
-            {
-                "name": "長島 徳宏",
-                "dept": "内製技",
-                "block": "生本",
-                "isLeader": true
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "塚本 知明",
                 "dept": "品本証技",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": true
+            },
+            {
+                "name": "長島 徳宏",
+                "dept": "内製技",
+                "block": "生本",
+                "isLeader": true,
+                "isFirstTimer": true
             }
         ]
     },
@@ -612,28 +633,32 @@ const GOLF_APP_DATA = {
         "cartNo": "No.06",
         "members": [
             {
+                "name": "村井　真二",
+                "dept": "RE",
+                "block": "R",
+                "isLeader": false,
+                "isFirstTimer": false
+            },
+            {
                 "name": "末吉 礼明",
                 "dept": "VS",
                 "block": "V",
-                "isLeader": false
-            },
-            {
-                "name": "田島 雄二",
-                "dept": "内製技",
-                "block": "生本",
-                "isLeader": false
-            },
-            {
-                "name": "久保田 泰三",
-                "dept": "調開発",
-                "block": "調本",
-                "isLeader": true
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "尾島 正夫",
                 "dept": "技析B",
                 "block": "生本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
+            },
+            {
+                "name": "久保田 泰三",
+                "dept": "調開発",
+                "block": "調本",
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -644,22 +669,25 @@ const GOLF_APP_DATA = {
         "cartNo": "No.07",
         "members": [
             {
-                "name": "西来路 淳一",
-                "dept": "品本企G",
-                "block": "品本",
-                "isLeader": false
+                "name": "植村　宙",
+                "dept": "GCM",
+                "block": "本社棟",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
-                "name": "秋吉　亮治",
-                "dept": "AG開R",
-                "block": "技本",
-                "isLeader": true
+                "name": "田中 健大",
+                "dept": "法務",
+                "block": "本社棟",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
-                "name": "大屋　広明",
-                "dept": "VS企",
-                "block": "V",
-                "isLeader": false
+                "name": "大井 貴登",
+                "dept": "R技PH",
+                "block": "R",
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -673,25 +701,29 @@ const GOLF_APP_DATA = {
                 "name": "和田　慎",
                 "dept": "R技P",
                 "block": "R",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "永田 英夫",
                 "dept": "技管",
                 "block": "技本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "平山 明美",
                 "dept": "労政",
                 "block": "本社棟",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "岸本 龍之介",
                 "dept": "人BP",
                 "block": "本社棟",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": true
             }
         ]
     },
@@ -702,28 +734,32 @@ const GOLF_APP_DATA = {
         "cartNo": "No.09",
         "members": [
             {
-                "name": "木谷 文彦",
-                "dept": "Ｍ工産",
-                "block": "M",
-                "isLeader": false
-            },
-            {
                 "name": "田中 秀和",
                 "dept": "労政",
                 "block": "本社棟",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
+            },
+            {
+                "name": "西来路 淳一",
+                "dept": "品本企G",
+                "block": "品本",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "宮脇　智寿子",
-                "dept": "Ｒ企販",
+                "dept": "R企販",
                 "block": "R",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": true
             },
             {
                 "name": "芦原 広明",
                 "dept": "技管",
                 "block": "技本",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -734,28 +770,32 @@ const GOLF_APP_DATA = {
         "cartNo": "No.10",
         "members": [
             {
+                "name": "Michael Knapek",
+                "dept": "YAI",
+                "block": "V",
+                "isLeader": false,
+                "isFirstTimer": true
+            },
+            {
                 "name": "井手 耕三",
                 "dept": "V",
                 "block": "V",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "山本 英樹",
                 "dept": "技管",
                 "block": "技本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "鹿又 智行",
                 "dept": "R技AA",
                 "block": "R",
-                "isLeader": false
-            },
-            {
-                "name": "田中 健大",
-                "dept": "法務",
-                "block": "本社棟",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": true
             }
         ]
     },
@@ -769,25 +809,29 @@ const GOLF_APP_DATA = {
                 "name": "横尾 周洋",
                 "dept": "YOC社",
                 "block": "YOC",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "中村 真人",
                 "dept": "技析B",
                 "block": "生本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "岡﨑 研二",
                 "dept": "品本企G",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "中村 優",
                 "dept": "YRM開",
                 "block": "技本",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": true
             }
         ]
     },
@@ -801,25 +845,29 @@ const GOLF_APP_DATA = {
                 "name": "筒井 幸雄",
                 "dept": "東科大",
                 "block": "技本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "伊藤 正和",
                 "dept": "調開発",
                 "block": "調本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "西岡 一昭",
                 "dept": "品本企P1",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "中本 成信",
                 "dept": "YOCM2",
                 "block": "YOC",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -830,22 +878,25 @@ const GOLF_APP_DATA = {
         "cartNo": "No.13",
         "members": [
             {
-                "name": "松本 豊樹",
-                "dept": "L社",
-                "block": "生本",
-                "isLeader": false
+                "name": "加茂 孝雄",
+                "dept": "品本証",
+                "block": "品本",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
-                "name": "福田 大",
-                "dept": "YRM開T",
-                "block": "技本",
-                "isLeader": false
+                "name": "栗田 智裕",
+                "dept": "品本証S",
+                "block": "品本",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
-                "name": "梶原　慎介",
-                "dept": "基開CA",
-                "block": "技本",
-                "isLeader": true
+                "name": "小林 民生",
+                "dept": "法務",
+                "block": "本社棟",
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -859,25 +910,29 @@ const GOLF_APP_DATA = {
                 "name": "竹下　哲",
                 "dept": "生技",
                 "block": "生本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "須田 元樹",
                 "dept": "品本企",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "髙見　利恵子",
                 "dept": "Ｒ企計",
                 "block": "R",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "清水 大",
                 "dept": "基開MF",
                 "block": "技本",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -891,25 +946,29 @@ const GOLF_APP_DATA = {
                 "name": "大塚 丈徳",
                 "dept": "品本",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "山口　寛太",
                 "dept": "生技 次",
                 "block": "生本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": true
             },
             {
                 "name": "荒川 久美子",
                 "dept": "品本企S3",
                 "block": "品本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "牧野 省吾",
                 "dept": "基開MF",
                 "block": "技本",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -923,25 +982,29 @@ const GOLF_APP_DATA = {
                 "name": "森田 卓寿",
                 "dept": "F社",
                 "block": "技本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": true
             },
             {
                 "name": "名村 知美",
                 "dept": "総RM",
                 "block": "本社棟",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "村久木 宏",
                 "dept": "人BP",
                 "block": "本社棟",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "吉田　稜平",
                 "dept": "金型試",
                 "block": "生本",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": true
             }
         ]
     },
@@ -955,25 +1018,29 @@ const GOLF_APP_DATA = {
                 "name": "山本 哲義",
                 "dept": "生本",
                 "block": "生本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
-                "name": "古川　伸征",
-                "dept": "RC",
-                "block": "R",
-                "isLeader": false
+                "name": "木谷 文彦",
+                "dept": "M工産",
+                "block": "M",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "尾花 卓也",
                 "dept": "調管",
                 "block": "調本",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "中元 善太",
                 "dept": "技管",
                 "block": "技本",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -984,28 +1051,32 @@ const GOLF_APP_DATA = {
         "cartNo": "No.18",
         "members": [
             {
-                "name": "加茂 孝雄",
-                "dept": "品本証",
-                "block": "品本",
-                "isLeader": false
+                "name": "松本 豊樹",
+                "dept": "L社",
+                "block": "生本",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
-                "name": "植村　宙",
-                "dept": "GCM",
-                "block": "本社棟",
-                "isLeader": false
+                "name": "古川　伸征",
+                "dept": "RC",
+                "block": "R",
+                "isLeader": false,
+                "isFirstTimer": true
             },
             {
-                "name": "栗田 智裕",
-                "dept": "品本証S",
-                "block": "品本",
-                "isLeader": false
+                "name": "田島 雄二",
+                "dept": "内製技",
+                "block": "生本",
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
-                "name": "小林 民生",
-                "dept": "法務",
-                "block": "本社棟",
-                "isLeader": true
+                "name": "梶原　慎介",
+                "dept": "基開CA",
+                "block": "技本",
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     },
@@ -1016,22 +1087,25 @@ const GOLF_APP_DATA = {
         "cartNo": "No.19",
         "members": [
             {
+                "name": "福田 大",
+                "dept": "YRM開T",
+                "block": "技本",
+                "isLeader": false,
+                "isFirstTimer": false
+            },
+            {
                 "name": "坪井 栄治",
                 "dept": "YOCT",
                 "block": "YOC",
-                "isLeader": false
+                "isLeader": false,
+                "isFirstTimer": false
             },
             {
                 "name": "華 炎",
                 "dept": "調開発",
                 "block": "調本",
-                "isLeader": false
-            },
-            {
-                "name": "大井 貴登",
-                "dept": "R技PH",
-                "block": "R",
-                "isLeader": true
+                "isLeader": true,
+                "isFirstTimer": false
             }
         ]
     }
@@ -1040,515 +1114,661 @@ const GOLF_APP_DATA = {
   // 参加者簡易名簿（プルダウン選択・ピン留め用）
   members: [
     {
+        "name": "Michael Knapek",
+        "dept": "YAI",
+        "block": "V",
+        "groupName": "中３",
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": true
+    },
+    {
         "name": "中元 善太",
         "dept": "技管",
         "block": "技本",
         "groupName": "西４",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "中本 成信",
         "dept": "YOCM2",
         "block": "YOC",
         "groupName": "中５",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "中村 優",
         "dept": "YRM開",
         "block": "技本",
         "groupName": "中４",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": true,
+        "isFirstTimer": true
     },
     {
         "name": "中村 真人",
         "dept": "技析B",
         "block": "生本",
         "groupName": "中４",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "久保田 泰三",
         "dept": "調開発",
         "block": "調本",
         "groupName": "東６",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "久保田 由美恵",
         "dept": "AI統",
         "block": "技本",
         "groupName": "東３",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "井手 耕三",
         "dept": "V",
         "block": "V",
         "groupName": "中３",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "伊藤 正和",
         "dept": "調開発",
         "block": "調本",
         "groupName": "中５",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "加茂 孝雄",
         "dept": "品本証",
         "block": "品本",
-        "groupName": "西５",
-        "course": "西コース → 東コース"
+        "groupName": "中６",
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "原 勝明",
         "dept": "生技",
         "block": "生本",
         "groupName": "東１",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "原 英則",
         "dept": "技本",
         "block": "技本",
         "groupName": "東３",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "古川　伸征",
         "dept": "RC",
         "block": "R",
-        "groupName": "西４",
-        "course": "西コース → 東コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "吉武 博利",
         "dept": "品本企S",
         "block": "品本",
         "groupName": "東２",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "吉田　稜平",
         "dept": "金型試",
         "block": "生本",
         "groupName": "西３",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": true,
+        "isFirstTimer": true
     },
     {
         "name": "名村 知美",
         "dept": "総RM",
         "block": "本社棟",
         "groupName": "西３",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "和田　慎",
         "dept": "R技P",
         "block": "R",
         "groupName": "中１",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "國田 和孝",
         "dept": "YOCT",
         "block": "YOC",
         "groupName": "東４",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "坪井 栄治",
         "dept": "YOCT",
         "block": "YOC",
         "groupName": "西６",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "塚本 知明",
         "dept": "品本証技",
         "block": "品本",
         "groupName": "東５",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "大井 貴登",
         "dept": "R技PH",
         "block": "R",
-        "groupName": "西６",
-        "course": "西コース → 東コース"
+        "groupName": "東７",
+        "course": "東コース → 中コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "大塚 丈徳",
         "dept": "品本",
         "block": "品本",
         "groupName": "西２",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
-        "name": "大屋　広明",
-        "dept": "VS企",
+        "name": "大屋 広明",
+        "dept": "GCM",
         "block": "V",
-        "groupName": "東７",
-        "course": "東コース → 中コース"
+        "groupName": "東４",
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "宮脇　智寿子",
-        "dept": "Ｒ企販",
+        "dept": "R企販",
         "block": "R",
         "groupName": "中２",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "家迫 慎一郎",
         "dept": "YOCM",
         "block": "YOC",
         "groupName": "東２",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "小林 民生",
         "dept": "法務",
         "block": "本社棟",
-        "groupName": "西５",
-        "course": "西コース → 東コース"
+        "groupName": "中６",
+        "course": "中コース → 西コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "尾島 正夫",
         "dept": "技析B",
         "block": "生本",
         "groupName": "東６",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "尾花 卓也",
         "dept": "調管",
         "block": "調本",
         "groupName": "西４",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "山口　寛太",
         "dept": "生技 次",
         "block": "生本",
         "groupName": "西２",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "山崎 美和",
         "dept": "経画",
         "block": "本社棟",
         "groupName": "東１",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "山本 哲義",
         "dept": "生本",
         "block": "生本",
         "groupName": "西４",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "山本 栄治",
         "dept": "技管",
         "block": "技本",
         "groupName": "東３",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "山本 英樹",
         "dept": "技管",
         "block": "技本",
         "groupName": "中３",
-        "course": "中コース → 西コース"
-    },
-    {
-        "name": "山田　達哉",
-        "dept": "総本",
-        "block": "本社棟",
-        "groupName": "東４",
-        "course": "東コース → 中コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "岡久 学",
         "dept": "R",
         "block": "R",
         "groupName": "東３",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "岡﨑 研二",
         "dept": "品本企G",
         "block": "品本",
         "groupName": "中４",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "岸本 龍之介",
         "dept": "人BP",
         "block": "本社棟",
         "groupName": "中１",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": true,
+        "isFirstTimer": true
     },
     {
         "name": "平尾 光輝",
         "dept": "V技開",
         "block": "V",
         "groupName": "東１",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "平山 明美",
         "dept": "労政",
         "block": "本社棟",
         "groupName": "中１",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "木谷 文彦",
-        "dept": "Ｍ工産",
+        "dept": "M工産",
         "block": "M",
-        "groupName": "中２",
-        "course": "中コース → 西コース"
+        "groupName": "西４",
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "末吉 礼明",
         "dept": "VS",
         "block": "V",
         "groupName": "東６",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "村久木 宏",
         "dept": "人BP",
         "block": "本社棟",
         "groupName": "西３",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "村井　真二",
         "dept": "RE",
         "block": "R",
-        "groupName": "東２",
-        "course": "東コース → 中コース"
+        "groupName": "東６",
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "松尾 小巻",
         "dept": "経OP",
         "block": "本社棟",
         "groupName": "東２",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "松本 豊樹",
         "dept": "L社",
         "block": "生本",
-        "groupName": "中６",
-        "course": "中コース → 西コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "柴田 悟",
         "dept": "栄社",
         "block": "本社棟",
         "groupName": "東５",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "栗田 智裕",
         "dept": "品本証S",
         "block": "品本",
-        "groupName": "西５",
-        "course": "西コース → 東コース"
+        "groupName": "中６",
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "桐野 博士",
         "dept": "GCM",
         "block": "M",
         "groupName": "東１",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "梶原　慎介",
         "dept": "基開CA",
         "block": "技本",
-        "groupName": "中６",
-        "course": "中コース → 西コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "森田 卓寿",
         "dept": "F社",
         "block": "技本",
         "groupName": "西３",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": true
     },
     {
         "name": "植村　宙",
         "dept": "GCM",
         "block": "本社棟",
-        "groupName": "西５",
-        "course": "西コース → 東コース"
+        "groupName": "東７",
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "横尾 周洋",
         "dept": "YOC社",
         "block": "YOC",
         "groupName": "中４",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "永田 英夫",
         "dept": "技管",
         "block": "技本",
         "groupName": "中１",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "浅井 雄介",
         "dept": "M開S1",
         "block": "M",
         "groupName": "東４",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "清水 大",
         "dept": "基開MF",
         "block": "技本",
         "groupName": "西１",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "清水 宏一",
         "dept": "人労 次",
         "block": "本社棟",
         "groupName": "東５",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "牧野 省吾",
         "dept": "基開MF",
         "block": "技本",
         "groupName": "西２",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "田中 健大",
         "dept": "法務",
         "block": "本社棟",
-        "groupName": "中３",
-        "course": "中コース → 西コース"
+        "groupName": "東７",
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "田中 秀和",
         "dept": "労政",
         "block": "本社棟",
         "groupName": "中２",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "田島 雄二",
         "dept": "内製技",
         "block": "生本",
-        "groupName": "東６",
-        "course": "東コース → 中コース"
+        "groupName": "西５",
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "福田 大",
         "dept": "YRM開T",
         "block": "技本",
-        "groupName": "中６",
-        "course": "中コース → 西コース"
+        "groupName": "西６",
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "秋吉　亮治",
         "dept": "AG開R",
         "block": "技本",
-        "groupName": "東７",
-        "course": "東コース → 中コース"
+        "groupName": "東２",
+        "course": "東コース → 中コース",
+        "isLeader": true,
+        "isFirstTimer": true
     },
     {
         "name": "竹下　哲",
         "dept": "生技",
         "block": "生本",
         "groupName": "西１",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "筒井 幸雄",
         "dept": "東科大",
         "block": "技本",
         "groupName": "中５",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "芦原 広明",
         "dept": "技管",
         "block": "技本",
         "groupName": "中２",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "荒川 久美子",
         "dept": "品本企S3",
         "block": "品本",
         "groupName": "西２",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "華 炎",
         "dept": "調開発",
         "block": "調本",
         "groupName": "西６",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": true,
+        "isFirstTimer": false
     },
     {
         "name": "西岡 一昭",
         "dept": "品本企P1",
         "block": "品本",
         "groupName": "中５",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "西来路 淳一",
         "dept": "品本企G",
         "block": "品本",
-        "groupName": "東７",
-        "course": "東コース → 中コース"
+        "groupName": "中２",
+        "course": "中コース → 西コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "赤星 孝行",
         "dept": "T推",
         "block": "品本",
         "groupName": "東４",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "長島 徳宏",
         "dept": "内製技",
         "block": "生本",
         "groupName": "東５",
-        "course": "東コース → 中コース"
+        "course": "東コース → 中コース",
+        "isLeader": true,
+        "isFirstTimer": true
     },
     {
         "name": "須田 元樹",
         "dept": "品本企",
         "block": "品本",
         "groupName": "西１",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "髙見　利恵子",
         "dept": "Ｒ企計",
         "block": "R",
         "groupName": "西１",
-        "course": "西コース → 東コース"
+        "course": "西コース → 東コース",
+        "isLeader": false,
+        "isFirstTimer": false
     },
     {
         "name": "鹿又 智行",
         "dept": "R技AA",
         "block": "R",
         "groupName": "中３",
-        "course": "中コース → 西コース"
+        "course": "中コース → 西コース",
+        "isLeader": true,
+        "isFirstTimer": true
     }
 ]
 };
