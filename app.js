@@ -230,9 +230,10 @@ function renderRulesAndSchedule() {
           <div style="font-size: 11px; font-weight: 700; color: #1b5e20;">${c.role}</div>
           <div style="font-size: 14px; font-weight: 700; color: #111827; margin-top: 2px;">${c.name}</div>
         </div>
-        <div style="font-size: 15px; font-weight: 800; color: #1b5e20; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 6px 12px; border-radius: 6px; letter-spacing: 0.05em;">
-          ${c.tel}
-        </div>
+        <a href="tel:${c.tel.replace(/[^0-9]/g, '')}" style="text-decoration: none; font-size: 15px; font-weight: 800; color: #1b5e20; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 6px 12px; border-radius: 6px; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;">
+          <i data-lucide="phone-call" style="width: 14px; height: 14px;"></i>
+          <span>${c.tel}</span>
+        </a>
       </div>
     `).join('');
   }

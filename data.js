@@ -271,11 +271,11 @@ const GOLF_APP_DATA = {
     {
       category: '個人戦',
       rank: '部門長賞 🎁',
-      title: '各部門長より豪華協賛景品（計21名様）',
+      title: '各部門長より豪華協賛景品（計23名様）',
       desc: '各部門長よりご協賛いただいた豪華景品！',
-      tag: '飛び賞（21賞）',
+      tag: '飛び賞（23賞）',
       icon: 'gift',
-      btnLabel: '協賛部門一覧（21賞）を見る',
+      btnLabel: '協賛部門一覧（23賞）を見る',
       closeLabel: '協賛部門一覧を閉じる',
       depts: [
         '12位: (F社)',
@@ -283,8 +283,9 @@ const GOLF_APP_DATA = {
         '16位: (栄社)',
         '18位: (YOC社)',
         '20位: (CB本)',
-        '23位: (総本)',
-        '25位: (経本)',
+        '22位: (総本)',
+        '24位: (経本)',
+        '26位: (調本)',
         '28位: (M)',
         '30位: (RE)',
         '33位: (東科大)',
@@ -296,8 +297,8 @@ const GOLF_APP_DATA = {
         '48位: (M工産)',
         '50位: (品本証)',
         '54位: (R技P)',
-        '58位: (生技)次',
-        '60位: (人事)次',
+        '58位: (生技次)',
+        '60位: (人事次)',
         '64位: (T推)',
         '68位: (技管)'
       ]
@@ -673,7 +674,7 @@ const GOLF_APP_DATA = {
                 "dept": "GCM",
                 "block": "本社棟",
                 "isLeader": false,
-                "isFirstTimer": false
+                "isFirstTimer": true
             },
             {
                 "name": "田中 健大",
@@ -1029,13 +1030,6 @@ const GOLF_APP_DATA = {
                 "isFirstTimer": false
             },
             {
-                "name": "尾花 卓也",
-                "dept": "調管",
-                "block": "調本",
-                "isLeader": false,
-                "isFirstTimer": false
-            },
-            {
                 "name": "中元 善太",
                 "dept": "技管",
                 "block": "技本",
@@ -1357,15 +1351,6 @@ const GOLF_APP_DATA = {
         "isFirstTimer": false
     },
     {
-        "name": "尾花 卓也",
-        "dept": "調管",
-        "block": "調本",
-        "groupName": "西４",
-        "course": "西コース → 東コース",
-        "isLeader": false,
-        "isFirstTimer": false
-    },
-    {
         "name": "山口　寛太",
         "dept": "生技 次",
         "block": "生本",
@@ -1561,7 +1546,7 @@ const GOLF_APP_DATA = {
         "groupName": "東７",
         "course": "東コース → 中コース",
         "isLeader": false,
-        "isFirstTimer": false
+        "isFirstTimer": true
     },
     {
         "name": "横尾 周洋",
